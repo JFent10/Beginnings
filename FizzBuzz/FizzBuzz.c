@@ -4,6 +4,9 @@ void main()
 {
     for (int i = 0; i < 100; i++)
     {
+        int a;
+        printf("->");
+        scanf("%d", &a);
         if (!(i % 5))
         {
             printf("Fizz");
