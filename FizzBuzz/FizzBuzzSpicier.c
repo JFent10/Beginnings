@@ -1,25 +1,29 @@
 #include<stdio.h>
 #include<malloc.h>
 
-void prompt(int*, int*, char*, char*);
-void fizzBuzz(int, int, char*, char*);
+int prompt(int*, int*, char*, char*);
+void fizzBuzz(int, int, char*, char*, int);
 
 void main()
 {
     int op1;
     int op2;
+    int repetitions;
 
     char* str1 = malloc(80);
     char* str2 = malloc(80);
 
-    prompt(&op1, &op2, str1, str2);
-    fizzBuzz(op1, op2, str1, str2);
+    repetitions = prompt(&op1, &op2, str1, str2);
+    printf("Repetitions is %d", repetitions);
+    fizzBuzz(op1, op2, str1, str2, repetitions);
+
     free(str1);
     free(str2);
 }
 
-void prompt(int* op1, int* op2, char* str1, char* str2)
+int prompt(int* op1, int* op2, char* str1, char* str2)
 {
+    int repetitions;
     printf("Please input the first multiple you'd like to replace -> ");
     scanf("%d", op1);
 
@@ -31,12 +35,20 @@ void prompt(int* op1, int* op2, char* str1, char* str2)
 
     printf("Please input the name for multiples of %d -> ", *op2);
     scanf("%79s", str2);
-    return;
+
+    /*printf("Please input the number of numbers you'd like to display -> ");
+    scanf("%d", repetitions);
+    */
+    repetitions = op1;
+
+    printf("check");    
+    return(repetitions);
 }
 
-void fizzBuzz(int op1, int op2, char* str1, char* str2)
+void fizzBuzz(int op1, int op2, char* str1, char* str2, int repetitions)
 {
-    for (int i = 0; i < 100; i++)
+    int i;
+    for (i = 0; i <= repetitions; i++)
     {
         if (!(i % op1))
         {
